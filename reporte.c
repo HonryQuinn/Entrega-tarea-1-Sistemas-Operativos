@@ -124,7 +124,6 @@ void segundo_plano() {
     
     printf("\n=== Sistema de reportes iniciado ===\n");
     printf("PID reportes: %d\n", getpid());
-    printf("Esperando reportes en FIFO: %s\n", FIFO_REPORTES);
     
     int fd_reportes = open(FIFO_REPORTES, O_RDWR);
     if (fd_reportes == -1) {
@@ -149,10 +148,10 @@ void segundo_plano() {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc == 1 || (argc == 2 && strcmp(argv[1], "daemon") == 0)) {
-        segundo_plano();
-        return 0;
-    }
+    if (argc == 1) {
+    segundo_plano();
+    return 0;
+}
  
     if (strcmp(argv[1], "agregar") == 0) {
         if (argc < 5) {
