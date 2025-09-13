@@ -48,11 +48,7 @@ void iniciar_proceso_reportes_externo() {
     proceso_reportes_pid = fork();
     if (proceso_reportes_pid == 0) {
         printf("Iniciando proceso externo de reportes...\n");
-        
-        execl("./reporte_daemon", "reporte_daemon", NULL);
-  
-        execl("./reporte", "reporte", "daemon", NULL);
-        
+        execl("./reporte", "reporte", NULL);
         perror("Error ejecutando proceso de reportes");
         exit(1);
         
